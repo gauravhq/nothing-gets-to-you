@@ -1,13 +1,16 @@
+// Per-post defaults + the infinite rotation hook (see src/_data/rotation.js).
+// A post's date is its most recent airing; it publishes once its first airing week has arrived; and it
+// cycles forever, so the blog always has a fresh weekly post with no API, no PC, and no manual work.
 module.exports = {
   layout: "post.njk",
   tags: "posts",
   eleventyComputed: {
-    // Scheduled backlog: a post is not written at all until its date arrives.
-    // The daily GitHub Action rebuild publishes each one on its week automatically.
-    permalink: (data) => {
-      if (data.page.date.getTime() > Date.now()) return false;
-      return `/blog/${data.page.fileSlug}/`;
-    },
-    eleventyExcludeFromCollections: (data) => data.page.date.getTime() > Date.now(),
+    date: (data) => data.rotation.dateFor[data.page.fileSlug] || data.page.date,
+    permalink: (data) =>
+      data.rotation.publishedSlugs.includes(data.page.fileSlug)
+        ? `/blog/${data.page.fileSlug}/`
+        : false,
+    eleventyExcludeFromCollections: (data) =>
+      !data.rotation.publishedSlugs.includes(data.page.fileSlug),
   },
 };
