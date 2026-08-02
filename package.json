@@ -1,0 +1,14 @@
+{
+  "name": "nothing-gets-to-you-site",
+  "version": "1.0.0",
+  "description": "Marketing website for the book Nothing Gets to You by Gaurav Srivastava",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "start": "eleventy --serve"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

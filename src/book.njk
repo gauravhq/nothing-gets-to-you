@@ -1,0 +1,53 @@
+---
+layout: base.njk
+permalink: /book/
+title: The Book
+pageDescription: About Nothing Gets to You, a calm, practical book on how to stop overreacting and protect your peace.
+---
+<section class="section"><div class="wrap"><div class="panel">
+  <div class="eyebrow" style="color:var(--red-dark);font-weight:800;letter-spacing:1px;text-transform:uppercase">The Book</div>
+  <h2>Nothing Gets to You</h2>
+  <p class="lead">{{ site.subtitle }}<br><span style="color:var(--ink-soft)">by {{ site.author }}</span></p>
+
+  <p>Most of us were never taught a third option. When something stings, we either swallow it and stew, or fire back and spend hours living with the fallout. Neither one brings us any peace.</p>
+  <p>This book is about the space in between: the pause where you get to choose your response instead of having it chosen for you. Drawing on ordinary moments at work and at home, it looks at why we react, what reacting quietly costs us, and how to build the steadiness to respond instead.</p>
+  <p>The aim is not to feel less. It is to be moved less. Not a quieter world, but a steadier you.</p>
+
+  <div class="rule"><span></span></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>What you'll find inside</h3>
+      <ul class="checks">
+        <li>Why being right so rarely brings peace, and what to reach for instead</li>
+        <li>How your oldest triggers work, and how to disarm them before they run the show</li>
+        <li>The power of the pause, and how to build the gap between feeling and doing</li>
+        <li>How to choose silence without suppressing yourself</li>
+        <li>How to respond instead of react, even when the provocation is right there</li>
+        <li>How to step out of the outrage machine online without going numb</li>
+        <li>What to do after you react, so a slip becomes useful instead of a spiral</li>
+        <li>A simple Toolkit of practices you can reach for in the heat of the moment</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>For the moments you know too well</h3>
+      <ul class="checks">
+        <li>the email that reads a little too cold</li>
+        <li>the credit that was quietly taken</li>
+        <li>the message at nine at night that ruins your sleep</li>
+        <li>the argument you won, and still lost the evening to</li>
+      </ul>
+      <p style="margin-top:14px">It does not promise a life with no provocations. It offers something better: a life where the thing lands, and you already know how to let it pass.</p>
+    </div>
+  </div>
+
+  <div class="buybar" style="border-top:none">
+    {% if site.amazon.live %}
+    <div class="btn-row">
+      <a class="btn" href="{{ site.amazon.kindle }}">Buy on Kindle</a>
+      <a class="btn ghost" href="{{ site.amazon.paperback }}">Buy the paperback</a>
+    </div>
+    {% else %}
+    <p class="soon">Coming soon on Amazon, Kindle and paperback. Check back shortly.</p>
+    {% endif %}
+  </div>
+</div></div></section>

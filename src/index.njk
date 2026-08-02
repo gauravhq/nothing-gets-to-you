@@ -1,0 +1,64 @@
+---
+layout: base.njk
+permalink: /
+---
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">{{ site.tagline }}</div>
+      <h1>Nothing<br>Gets to You</h1>
+      <p class="sub">{{ site.subtitle }}</p>
+      <div class="buy">
+        {% if site.amazon.live %}
+        <div class="btn-row">
+          <a class="btn" href="{{ site.amazon.kindle }}">Buy on Kindle</a>
+          <a class="btn ghost" href="{{ site.amazon.paperback }}">Buy the paperback</a>
+        </div>
+        {% else %}
+        <div class="btn-row"><a class="btn" href="/book/">Read what it's about</a></div>
+        <p class="soon">Coming soon on Amazon, Kindle and paperback.</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="cover-shot">
+      <img src="/assets/cover.jpg" alt="Nothing Gets to You book cover" width="320" height="512">
+    </div>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="panel">
+  <h2>Most of us were never taught a third option</h2>
+  <p class="lead">When something stings, a cold email, a remark across the table, a message at nine at night, we either swallow it and stew, or fire back and spend hours living with the fallout. The reaction takes a second. The cost stays long after everyone else has moved on.</p>
+  <p><strong>Nothing Gets to You</strong> is about the space in between: the small pause where you get to choose your response instead of having it chosen for you. Not by feeling less. By being moved less. Not a quieter world, but a steadier you.</p>
+  <div class="rule"><span></span></div>
+  <div class="grid2">
+    <div>
+      <h3 style="font-family:Anton,sans-serif;text-transform:none;color:var(--red-dark)">What's inside</h3>
+      <ul class="checks">
+        <li>Why being right so rarely brings peace</li>
+        <li>How your oldest triggers work, and how to disarm them</li>
+        <li>The power of the pause, and how to build it</li>
+        <li>How to respond instead of react in the hot moment</li>
+        <li>What to do after you slip, and stay steady for good</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="pullquote">"Calm is not the same as staying silent. It is how you think clearly enough to act well."</p>
+    </div>
+  </div>
+</div></div></section>
+
+<section class="section"><div class="wrap">
+  <h2 style="color:var(--ink);text-align:center;margin-bottom:6px">From the blog</h2>
+  <div class="rule"><span></span></div>
+  <div class="post-list">
+    {% for post in collections.posts %}{% if loop.index <= 3 %}
+    <a class="post-item" href="{{ post.url }}">
+      <div class="date">{{ post.date | readableDate }}</div>
+      <h3>{{ post.data.title }}</h3>
+      <p>{{ post.data.pageDescription }}</p>
+    </a>
+    {% endif %}{% endfor %}
+  </div>
+  <p style="text-align:center;margin-top:20px"><a class="btn ghost" href="/blog/">Read the blog</a></p>
+</div></section>

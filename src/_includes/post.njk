@@ -1,0 +1,23 @@
+---
+layout: base.njk
+---
+<section class="section"><div class="wrap" style="max-width:760px">
+  <article class="post">
+    <div class="date">{{ date | readableDate }}</div>
+    <h1>{{ title }}</h1>
+    {{ content | safe }}
+    <div class="buybar">
+      <p><strong>This is one small idea from the book <em>Nothing Gets to You</em>.</strong></p>
+      {% if site.amazon.live %}
+      <div class="btn-row">
+        <a class="btn" href="{{ site.amazon.kindle }}">Get the Kindle edition</a>
+        <a class="btn ghost" href="{{ site.amazon.paperback }}">Get the paperback</a>
+      </div>
+      {% else %}
+      <div class="btn-row"><a class="btn" href="/book/">See the book</a></div>
+      <p class="soon">Coming soon on Amazon.</p>
+      {% endif %}
+    </div>
+  </article>
+  <p style="margin-top:24px"><a href="/blog/">&larr; All posts</a></p>
+</div></section>
