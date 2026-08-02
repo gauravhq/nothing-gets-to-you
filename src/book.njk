@@ -41,13 +41,10 @@ pageDescription: About Nothing Gets to You, a calm, practical book on how to sto
   </div>
 
   <div class="buybar" style="border-top:none">
-    {% if site.amazon.live %}
     <div class="btn-row">
-      <a class="btn" href="{{ site.amazon.kindle }}">Buy on Kindle</a>
-      <a class="btn ghost" href="{{ site.amazon.paperback }}">Buy the paperback</a>
+      {% if site.amazon.kindle %}<a class="btn" href="{{ site.amazon.kindle }}" target="_blank" rel="noopener">Buy on Kindle</a>{% endif %}
+      {% if site.amazon.paperback %}<a class="btn ghost" href="{{ site.amazon.paperback }}" target="_blank" rel="noopener">Buy the paperback</a>{% endif %}
     </div>
-    {% else %}
-    <p class="soon">Coming soon on Amazon, Kindle and paperback. Check back shortly.</p>
-    {% endif %}
+    {% if not site.amazon.paperback %}<p class="soon">Paperback coming soon.</p>{% endif %}
   </div>
 </div></div></section>

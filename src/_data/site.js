@@ -8,10 +8,9 @@ module.exports = {
     "and how to build the steadiness to respond instead of react.",
   // Free GitHub Pages URL (project site). Update if the account or repo changes.
   url: "https://gauravaccentureproducts.github.io/nothing-gets-to-you",
-  // Buy links: placeholders until the book is live on Amazon. Swap in real URLs then.
+  // Buy links. A button shows for each format that has a real URL below.
   amazon: {
-    kindle: "#",
-    paperback: "#",
-    live: false, // set true once the Amazon links are real
+    kindle: "https://www.amazon.com/dp/B0HCJTKD4Y",
+    paperback: "", // paste the paperback URL here once it is live
   },
 };

@@ -9,15 +9,11 @@ permalink: /
       <h1>Nothing<br>Gets to You</h1>
       <p class="sub">{{ site.subtitle }}</p>
       <div class="buy">
-        {% if site.amazon.live %}
         <div class="btn-row">
-          <a class="btn" href="{{ site.amazon.kindle }}">Buy on Kindle</a>
-          <a class="btn ghost" href="{{ site.amazon.paperback }}">Buy the paperback</a>
+          {% if site.amazon.kindle %}<a class="btn" href="{{ site.amazon.kindle }}" target="_blank" rel="noopener">Buy on Kindle</a>{% endif %}
+          {% if site.amazon.paperback %}<a class="btn ghost" href="{{ site.amazon.paperback }}" target="_blank" rel="noopener">Buy the paperback</a>{% else %}<a class="btn ghost" href="/book/">What it's about</a>{% endif %}
         </div>
-        {% else %}
-        <div class="btn-row"><a class="btn" href="/book/">Read what it's about</a></div>
-        <p class="soon">Coming soon on Amazon, Kindle and paperback.</p>
-        {% endif %}
+        {% if not site.amazon.paperback %}<p class="soon">Paperback coming soon.</p>{% endif %}
       </div>
     </div>
     <div class="cover-shot">
