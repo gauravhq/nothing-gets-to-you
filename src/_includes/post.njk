@@ -4,10 +4,11 @@ layout: base.njk
 <section class="section"><div class="wrap" style="max-width:760px">
   <article class="post">
     <div class="date">{{ date | readableDate }}</div>
+    <p class="frombook">From <a href="/book/"><em>{{ site.title }}</em></a> by {{ site.author }}</p>
     <h1>{{ title }}</h1>
     {{ content | safe }}
     <div class="buybar">
-      <p><strong>This is one small idea from the book <em>Nothing Gets to You</em>.</strong></p>
+      <p><strong>This is one small idea from <em>{{ site.title }}</em> by {{ site.author }}.</strong></p>
       <div class="btn-row">
         {% if site.amazon.kindle %}<a class="btn" href="{{ site.amazon.kindle }}" target="_blank" rel="noopener">Get it on Kindle</a>{% endif %}
         <a class="btn ghost" href="/book/">About the book</a>
