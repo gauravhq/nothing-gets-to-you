@@ -11,7 +11,7 @@ module.exports = {
   // Buy links. A button shows for each format that has a real URL below.
   amazon: {
     kindle: "https://www.amazon.com/dp/B0HCJTKD4Y",
-    paperback: "", // paste the paperback URL here once it is live
+    paperback: "https://www.amazon.co.jp/dp/B0HCKTXBNT",
   },
   // Paste the token from Google Search Console (HTML tag method) to verify ownership.
   googleVerification: "",
