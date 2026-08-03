@@ -2,6 +2,8 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  // Google Search Console HTML-file verification, served at the site root.
+  eleventyConfig.addPassthroughCopy({ "googlec02e90d782ab43ba.html": "googlec02e90d782ab43ba.html" });
   // rewrites internal href/src to include the pathPrefix (project GitHub Pages site)
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
