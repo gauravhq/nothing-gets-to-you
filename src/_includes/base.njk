@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <title>{% if title %}{{ title }} - {{ site.title }}{% else %}{{ site.title }} - {{ site.subtitle }}{% endif %}</title>
   <meta name="description" content="{{ pageDescription or site.description }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -17,8 +18,11 @@
   <meta name="twitter:description" content="{{ pageDescription or site.description }}">
   <meta name="twitter:image" content="{{ site.url }}/assets/cover.jpg">
   {% if site.googleVerification %}<meta name="google-site-verification" content="{{ site.googleVerification }}">{% endif %}
+  {% if site.analytics.plausibleDomain %}<script defer data-domain="{{ site.analytics.plausibleDomain }}" src="https://plausible.io/js/script.js"></script>{% endif %}
+  {% if site.analytics.ga4Id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.ga4Id }}"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.analytics.ga4Id }}');</script>{% endif %}
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":{{ site.title | dump | safe }},"url":{{ (site.url + "/") | dump | safe }},"description":{{ site.description | dump | safe }},"author":{"@type":"Person","name":{{ site.author | dump | safe }}}}
+  {"@context":"https://schema.org","@type":"WebSite","@id":{{ (site.url + "/#website") | dump | safe }},"name":{{ site.title | dump | safe }},"url":{{ (site.url + "/") | dump | safe }},"description":{{ site.description | dump | safe }},"inLanguage":"en","author":{"@type":"Person","@id":{{ (site.url + "/author/#person") | dump | safe }},"name":{{ site.author | dump | safe }}}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

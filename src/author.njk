@@ -4,6 +4,9 @@ permalink: /author/
 title: Author
 pageDescription: About Gaurav Srivastava, author of Nothing Gets to You.
 ---
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","@id":{{ (site.url + "/author/#person") | dump | safe }},"name":{{ site.author | dump | safe }},"url":{{ (site.url + "/author/") | dump | safe }},"jobTitle":"Author","description":{{ ("Author of " + site.title + ", a practical book on how to stop overreacting, stay calm under pressure, and protect your peace.") | dump | safe }},"knowsAbout":["Overreacting","Emotional self-regulation","Staying calm under pressure","Anger management","Mindfulness","Personal development"]{% if site.authorImage %},"image":{{ site.authorImage | dump | safe }}{% endif %}{% if site.authorSameAs and site.authorSameAs.length %},"sameAs":{{ site.authorSameAs | dump | safe }}{% endif %}}
+</script>
 <section class="section"><div class="wrap"><div class="panel" style="max-width:760px;margin:0 auto">
   <div class="eyebrow" style="color:var(--red-dark);font-weight:800;letter-spacing:1px;text-transform:uppercase">The Author</div>
   <h2>Gaurav Srivastava</h2>
