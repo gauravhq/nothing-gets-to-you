@@ -116,6 +116,19 @@ article.post p { font-size: 18px; margin: 0 0 18px; }
 article.post h2, article.post h3 { text-transform: none; margin-top: 28px; }
 .buybar { margin-top: 34px; padding-top: 24px; border-top: 2px solid rgba(0,0,0,.1); }
 
+/* ---- FAQ accordion ---- */
+.faq { background: var(--paper); border-radius: 12px; padding: 2px 20px; margin: 10px 0; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+.faq > summary { cursor: pointer; font-weight: 700; font-size: 18px; padding: 15px 0; list-style: none; color: var(--ink); }
+.faq > summary::-webkit-details-marker { display: none; }
+.faq > summary::after { content: "+"; float: right; color: var(--red-dark); font-weight: 800; font-size: 22px; line-height: 1; }
+.faq[open] > summary { color: var(--red-dark); }
+.faq[open] > summary::after { content: "-"; }
+.faq-a { padding: 0 0 16px; }
+.faq-a p { font-size: 17px; color: var(--ink-soft); margin: 0 0 10px; }
+.faq-more a { font-weight: 700; font-size: 14px; }
+.foot-links { font-size: 14px; }
+.foot-links a { color: var(--red-dark); }
+
 /* ---- footer ---- */
 .site-footer { padding: 40px 0; text-align: center; color: var(--ink-soft); }
 .site-footer a { color: var(--red-dark); }
