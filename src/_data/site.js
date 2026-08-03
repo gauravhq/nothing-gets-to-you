@@ -13,4 +13,6 @@ module.exports = {
     kindle: "https://www.amazon.com/dp/B0HCJTKD4Y",
     paperback: "", // paste the paperback URL here once it is live
   },
+  // Paste the token from Google Search Console (HTML tag method) to verify ownership.
+  googleVerification: "",
 };

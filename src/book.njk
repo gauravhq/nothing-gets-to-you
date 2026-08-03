@@ -4,6 +4,9 @@ permalink: /book/
 title: The Book
 pageDescription: About Nothing Gets to You, a calm, practical book on how to stop overreacting and protect your peace.
 ---
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":{{ (site.title + ": " + site.subtitle) | dump | safe }},"author":{"@type":"Person","name":{{ site.author | dump | safe }}},"description":{{ site.description | dump | safe }},"image":{{ (site.url + "/assets/cover.jpg") | dump | safe }},"url":{{ site.amazon.kindle | dump | safe }},"inLanguage":"en","bookFormat":"https://schema.org/EBook"}
+</script>
 <section class="section"><div class="wrap"><div class="panel">
   <div class="eyebrow" style="color:var(--red-dark);font-weight:800;letter-spacing:1px;text-transform:uppercase">The Book</div>
   <h2>Nothing Gets to You</h2>

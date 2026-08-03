@@ -1,6 +1,9 @@
 ---
 layout: base.njk
 ---
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ title | dump | safe }},"description":{{ pageDescription | dump | safe }},"datePublished":{{ (date | isoDate) | dump | safe }},"author":{"@type":"Person","name":{{ site.author | dump | safe }}},"publisher":{"@type":"Organization","name":{{ site.title | dump | safe }}},"image":{{ (site.url + "/assets/cover.jpg") | dump | safe }},"mainEntityOfPage":{{ (site.url + page.url) | dump | safe }},"isPartOf":{"@type":"Book","name":{{ site.title | dump | safe }},"author":{"@type":"Person","name":{{ site.author | dump | safe }}}}}
+</script>
 <section class="section"><div class="wrap" style="max-width:760px">
   <article class="post">
     <div class="date">{{ date | readableDate }}</div>

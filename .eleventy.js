@@ -6,13 +6,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
   // Only posts whose date has ARRIVED are published (scheduled backlog), newest first.
-  eleventyConfig.addCollection("posts", (api) => {
-    const now = Date.now();
-    return api
-      .getFilteredByGlob("src/posts/*.md")
-      .filter((p) => p.date.getTime() <= now)
-      .sort((a, b) => b.date.getTime() - a.date.getTime());
-  });
+  // All posts are permanent, indexable pages, newest first.
+  eleventyConfig.addCollection("posts", (api) =>
+    api.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date.getTime() - a.date.getTime())
+  );
 
   eleventyConfig.addFilter("readableDate", (d) =>
     new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
