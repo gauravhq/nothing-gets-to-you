@@ -42,6 +42,7 @@ pageDescription: Search every post and answer on Nothing Gets to You by Gaurav S
   }
 </style>
 <script src="{{ '/pagefind/pagefind-ui.js' | url }}"></script>
+<script src="{{ '/assets/search-enhance.js' | url }}"></script>
 <script>
   window.addEventListener("DOMContentLoaded", function () {
     new PagefindUI({
@@ -51,6 +52,16 @@ pageDescription: Search every post and answer on Nothing Gets to You by Gaurav S
       showSubResults: true,     // surface the matching section of long pages (the FAQ especially)
       pageSize: 8,
       resetStyles: false,       // keep the site's own typography
+    });
+    // rescue natural-language questions that strict AND matching drops to zero
+    window.SearchEnhance({
+      container: "#search",
+      bundlePath: "{{ '/pagefind/' | url }}",
+      links: [
+        { url: "{{ '/faq/' | url }}", label: "Browse the FAQ" },
+        { url: "{{ '/blog/' | url }}", label: "Browse all posts" },
+        { url: "{{ '/book/' | url }}", label: "About the book" }
+      ]
     });
   });
 </script>
