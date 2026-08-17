@@ -21,7 +21,7 @@ pageDescription: Answers to common questions about overreacting, staying calm un
   {%- for g in faqs.groups %}
   <h2 id="{{ g.id }}" style="text-transform:none;color:var(--red-dark);margin-top:34px;scroll-margin-top:78px">{{ g.category }}</h2>
   {%- for item in g.items %}
-  <details class="faq">
+  <details class="faq" id="q-{{ g.id }}-{{ loop.index }}">
     <summary>{{ item.q }}</summary>
     <div class="faq-a"><p>{{ item.a }}</p>
       {%- if item.link %}
@@ -37,3 +37,19 @@ pageDescription: Answers to common questions about overreacting, staying calm un
     <a class="btn ghost" href="/book/">About the book</a></div>
   </div>
 </div></section>
+<script>
+  /* Search links to a single question. Open that accordion and put it in view, instead of
+     landing on a collapsed row the reader then has to hunt for. */
+  (function () {
+    function openTarget() {
+      var id = location.hash.slice(1);
+      if (!id) return;
+      var el = document.getElementById(id);
+      if (!el) return;
+      var d = el.tagName === "DETAILS" ? el : el.closest("details");
+      if (d) { d.open = true; d.scrollIntoView({ block: "center" }); }
+    }
+    window.addEventListener("hashchange", openTarget);
+    openTarget();
+  })();
+</script>
