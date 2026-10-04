@@ -3,6 +3,7 @@
 // so the site keeps a fresh weekly element. Advances on the daily GitHub Action rebuild.
 const fs = require("fs");
 const path = require("path");
+const republish = require("../../lib/republish");
 const WEEK = 7 * 24 * 3600 * 1000;
 const EPOCH = Date.parse("2026-06-28T00:00:00Z");
 
@@ -10,10 +11,14 @@ module.exports = function () {
   const dir = path.join(__dirname, "..", "posts");
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md")).sort();
   const N = files.length;
-  const now = process.env.ROTATION_NOW ? Number(process.env.ROTATION_NOW) : Date.now();
+  const now = republish.now();
   let wk = Math.floor((now - EPOCH) / WEEK);
   if (wk < 0) wk = 0;
-  const f = files[((wk % N) + N) % N];
+  let f = files[((wk % N) + N) % N];
+  // Once weekly republishing has started, the reflection of the week IS the post republished this week,
+  // the same way it was the newly published post during the original drip (lib/republish.js).
+  const rp = republish.load(path.join(__dirname, "..", ".."), now);
+  if (rp.active) f = rp.current.file;
   const slug = f.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, "");
   const raw = fs.readFileSync(path.join(dir, f), "utf8");
   const title = (raw.match(/title:\s*"([^"]*)"/) || [])[1] || slug;

@@ -1,16 +1,33 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const republish = require("./lib/republish");
 
 module.exports = function (eleventyConfig) {
+  // Republishing schedule for this build (lib/republish.js), computed when the posts collection is built
+  // and read by the `rp` filter in every template that shows a post's date.
+  let RP = null;
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   // Google Search Console HTML-file verification, served at the site root.
   eleventyConfig.addPassthroughCopy({ "googlec02e90d782ab43ba.html": "googlec02e90d782ab43ba.html" });
   // rewrites internal href/src to include the pathPrefix (project GitHub Pages site)
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-  // Only posts whose date has ARRIVED are published (scheduled backlog), newest first.
-  // All posts are permanent, indexable pages, newest first.
-  eleventyConfig.addCollection("posts", (api) =>
-    api.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date.getTime() - a.date.getTime())
+  // All posts are permanent, indexable pages. Newest first, where "newest" is the most recent publish
+  // OR republish, so this week's republished post leads.
+  eleventyConfig.addCollection("posts", (api) => {
+    RP = republish.load(__dirname, republish.now());
+    const when = (p) => (RP.byUrl(p.url) || { effective: p.date.getTime() }).effective;
+    return api.getFilteredByGlob("src/posts/*.md").sort((a, b) => when(b) - when(a));
+  });
+  // Republish facts for one post URL (null for any non-post page). See lib/republish.js.
+  eleventyConfig.addFilter("rp", (url) => (RP ? RP.byUrl(url) : null));
+  eleventyConfig.addFilter("monthYear", (d) =>
+    new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "UTC" })
+  );
+  eleventyConfig.addFilter("isoDay", (d) => new Date(d).toISOString().slice(0, 10));
+  // Feed readers resolve links against the feed, not the page, so root-relative hrefs inside a
+  // Revisited addition must become absolute in RSS. siteUrl already carries the project path.
+  eleventyConfig.addFilter("absolutize", (html, siteUrl) =>
+    String(html || "").replace(/href="\//g, `href="${siteUrl}/`)
   );
 
   eleventyConfig.addFilter("readableDate", (d) =>
